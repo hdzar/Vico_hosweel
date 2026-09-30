@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para Él 🏎️❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #080808;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #080808;
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-number {
+      font-family: "Anton", sans-serif;
+      font-size: 100px;
+      color: #ffcc00;
+      animation: pulse 1s infinite;
+    }
+
+    .loader-text {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 25px;
+      letter-spacing: 5px;
+      color: #e10600;
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    /* =========================
+       PROGRESS BAR
+    ========================= */
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background: #ffcc00;
+      z-index: 10000;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      z-index: 1000;
+      transition: 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: "Anton", sans-serif;
+      font-size: 25px;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #e10600;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(230,80,20,0.15),
+          rgba(10,10,10,0.9)
+        ),
+        linear-gradient(
+          180deg,
+          #e87935 0%,
+          #f5ad54 35%,
+          #4a1710 70%,
+          #080808 100%
+        );
+
+      display: flex;
+      align-items: center;
+      padding: 120px 7% 80px;
+    }
+
+    .sun {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: #ffd86b;
+      right: 12%;
+      top: 15%;
+      box-shadow: 0 0 80px #ffb52e;
+    }
+
+    .cloud {
+      position: absolute;
+      width: 250px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      filter: blur(8px);
+      top: 20%;
+      left: 8%;
+      animation: cloudMove 25s linear infinite;
+    }
+
+    .cloud.two {
+      top: 32%;
+      left: 55%;
+      transform: scale(0.7);
+      animation-duration: 32s;
+    }
+
+    @keyframes cloudMove {
+      from {
+        transform: translateX(-100px);
+      }
+
+      to {
+        transform: translateX(300px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      max-width: 700px;
+    }
+
+    .small-title {
+      color: #ffcc00;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 5px;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: "Anton", sans-serif;
+      font-size: clamp(70px, 13vw, 170px);
+      line-height: 0.8;
+      text-transform: uppercase;
+      text-shadow: 7px 7px 0 #000;
+    }
+
+    .hero h1 span {
+      color: #e10600;
+    }
+
+    .hero-subtitle {
+      font-size: 19px;
+      margin-top: 25px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-red {
+      background: #e10600;
+      color: white;
+      box-shadow: 0 10px 30px rgba(225,6,0,0.35);
+    }
+
+    .btn-yellow {
+      background: #ffcc00;
+      color: #111;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+
+    /* =========================
+       COCHE
+    ========================= */
+
+    .car-wrapper {
+      position: absolute;
+      right: 5%;
+      bottom: 18%;
+      z-index: 4;
+      animation: carFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes carFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .car {
+      width: 420px;
+      height: 150px;
+      position: relative;
+    }
+
+    .car-body {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      width: 350px;
+      height: 95px;
+      background: linear-gradient(145deg,#f21d18,#a90000);
+      border-radius: 70px 100px 30px 30px;
+      border: 5px solid #111;
+      box-shadow:
+        inset 0 -15px rgba(0,0,0,0.25),
+        0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    .car-top {
+      position: absolute;
+      top: -45px;
+      left: 115px;
+      width: 150px;
+      height: 70px;
+      background: #c50000;
+      border: 5px solid #111;
+      border-radius: 80px 80px 0 0;
+    }
+
+    .window {
+      position: absolute;
+      top: -35px;
+      left: 135px;
+      width: 55px;
+      height: 45px;
+      background: #222;
+      border: 3px solid #111;
+      transform: skew(-10deg);
+    }
+
+    .window.two {
+      left: 195px;
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: 0;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #090909;
+      border: 8px solid #222;
+      z-index: 5;
+    }
+
+    .wheel::after {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      background: #aaa;
+      border-radius: 50%;
+      border: 4px solid #333;
+    }
+
+    .wheel.one {
+      left: 70px;
+    }
+
+    .wheel.two {
+      right: 55px;
+    }
+
+    .number {
+      position: absolute;
+      right: 110px;
+      top: 25px;
+      font-family: "Anton", sans-serif;
+      font-size: 50px;
+      color: #ffcc00;
+      text-shadow: 3px 3px #111;
+    }
+
+    .light {
+      position: absolute;
+      right: 25px;
+      top: 45px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 20px white;
+    }
+
+    /* =========================
+       ROAD
+    ========================= */
+
+    .road {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: #171717;
+      border-top: 5px solid #333;
+    }
+
+    .road-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 200%;
+      height: 8px;
+
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0 70px,
+        #eee 70px 130px
+      );
+
+      animation: roadMove 1s linear infinite;
+    }
+
+    @keyframes roadMove {
+      to {
+        transform: translateX(-200px);
+      }
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      position: relative;
+      padding: 110px 7%;
+    }
+
+    .section-title {
+      font-family: "Anton", sans-serif;
+      font-size: clamp(45px, 8vw, 90px);
+      text-transform: uppercase;
+      line-height: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .section-title span {
+      color: #e10600;
+    }
+
+    .section-description {
+      color: #bbb;
+      max-width: 650px;
+      line-height: 1.8;
+      margin-bottom: 50px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 25px;
+      padding: 35px;
+      transition: 0.4s;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #e10600;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .card-icon {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 32px;
+      color: #ffcc00;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       COSAS LINDAS
+    ========================= */
+
+    .love-section {
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(225,6,0,0.15),
+          transparent 35%
+        ),
+        #0c0c0c;
+    }
+
+    .love-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .love-card {
+      min-height: 190px;
+      padding: 30px;
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        #191919,
+        #0f0f0f
+      );
+      border: 1px solid #292929;
+      position: relative;
+      overflow: hidden;
+      transition: 0.4s;
+    }
+
+    .love-card:hover {
+      transform: scale(1.02);
+      border-color: #ffcc00;
+    }
+
+    .love-card::after {
+      content: "🏁";
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+      font-size: 55px;
+      opacity: 0.08;
+    }
+
+    .love-card h3 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 28px;
+      color: #e10600;
+      margin-bottom: 10px;
+    }
+
+    .love-card p {
+      color: #ddd;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       MÚSICA
+    ========================= */
+
+    .music-section {
+      display: flex;
+      justify-content: center;
+      background: #0a0a0a;
+    }
+
+    .music-card {
+      width: min(750px,100%);
+      text-align: center;
+      padding: 60px 30px;
+      border-radius: 35px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #171717,
+          #242424
+        );
+
+      border: 2px solid rgba(225,6,0,0.5);
+
+      box-shadow:
+        0 25px 80px rgba(0,0,0,0.5);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .music-card::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: #e10600;
+      filter: blur(100px);
+      opacity: 0.2;
+      top: -100px;
+      right: -100px;
+    }
+
+    .music-icon {
+      font-size: 60px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .mini-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 4px;
+      color: #ffcc00;
+      font-size: 20px;
+    }
+
+    .music-card h2 {
+      font-family: "Anton", sans-serif;
+      font-size: clamp(40px,7vw,70px);
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .music-card p:not(.mini-title) {
+      color: #bbb;
+      margin: 0 auto 30px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .spotify-button {
+      display: inline-block;
+      padding: 16px 30px;
+      border-radius: 50px;
+      background: #1db954;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(29,185,84,0.25);
+    }
+
+    .spotify-button:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(29,185,84,0.4);
+    }
+
+    /* =========================
+       MENSAJE
+    ========================= */
+
+    .message {
+      text-align: center;
+      background:
+        linear-gradient(
+          180deg,
+          #0b0b0b,
+          #151515
+        );
+    }
+
+    .message-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 60px 30px;
+      border-radius: 30px;
+      border: 1px solid #292929;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .message-box .quote {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(35px,6vw,70px);
+      color: #ffcc00;
+      line-height: 1;
+      margin-bottom: 30px;
+    }
+
+    .message-box p {
+      color: #ccc;
+      line-height: 2;
+      font-size: 17px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+      padding: 45px 20px;
+      background: #050505;
+      color: #777;
+    }
+
+    footer strong {
+      color: #e10600;
+    }
+
+    /* =========================
+       ANIMACIONES
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .speed-line {
+      position: absolute;
+      height: 3px;
+      width: 100px;
+      background: white;
+      opacity: 0.3;
+      animation: speed 1s linear infinite;
+    }
+
+    @keyframes speed {
+      from {
+        transform: translateX(100vw);
+      }
+
+      to {
+        transform: translateX(-200px);
+      }
+    }
+
+    .speed1 {
+      top: 35%;
+      animation-delay: 0.2s;
+    }
+
+    .speed2 {
+      top: 45%;
+      animation-delay: 0.6s;
+      width: 150px;
+    }
+
+    .speed3 {
+      top: 60%;
+      animation-delay: 0.9s;
+      width: 70px;
+    }
+
+    /* =========================
+       ACELERAR
+    ========================= */
+
+    body.fast-mode .road-line {
+      animation-duration: 0.3s;
+    }
+
+    body.fast-mode .car-wrapper {
+      animation-duration: 0.5s;
+    }
+
+    body.fast-mode .speed-line {
+      animation-duration: 0.3s;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:900px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      nav .links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 900px;
+        padding-top: 130px;
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 85px;
+      }
+
+      .car-wrapper {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 13%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .love-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .car {
+        transform: scale(0.75);
+      }
+
+    }
+
+    @media(max-width:500px) {
+
+      .hero h1 {
+        font-size: 65px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .car-wrapper {
+        bottom: 10%;
+      }
+
+      .car {
+        transform: scale(0.58);
+      }
+
+      .sun {
+        width: 110px;
+        height: 110px;
+      }
+
+      .music-card {
+        padding: 45px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       LOADER
+  ========================= -->
+
+  <div id="loader">
+
+    <div class="loader-number" id="loaderNumber">
+      3
+    </div>
+
+    <div class="loader-text">
+      PREPÁRATE...
+    </div>
+
+  </div>
+
+
+  <!-- PROGRESS -->
+
+  <div class="progress" id="progress"></div>
+
+
+  <!-- =========================
+       NAV
+  ========================= -->
+
+  <nav id="navbar">
+
+    <div class="logo">
+      RACE<span>♥</span>
+    </div>
+
+    <div class="links">
+
+      <a href="#inicio">
+        Inicio
+      </a>
+
+      <a href="#cosas">
+        Cosas lindas
+      </a>
+
+      <a href="#musica">
+        Música
+      </a>
+
+      <a href="#mensaje">
+        Para ti
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero" id="inicio">
+
+    <div class="sun"></div>
+
+    <div class="cloud"></div>
+    <div class="cloud two"></div>
+
+    <div class="speed-line speed1"></div>
+    <div class="speed-line speed2"></div>
+    <div class="speed-line speed3"></div>
+
+
+    <div class="hero-content">
+
+      <div class="small-title">
+        BIENVENIDO A TU CARRERA
+      </div>
+
+      <h1>
+        PARA<br>
+        <span>ÉL</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Hay personas que llegan a tu vida como un coche
+        en una pista: rápido, inesperado y dejando una
+        huella imposible de ignorar. ❤️🏎️
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#cosas" class="btn btn-red">
+          Empezar 🏁
+        </a>
+
+        <button class="btn btn-yellow" id="speedButton">
+          KA-CHOW ⚡
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- COCHE -->
+
+    <div class="car-wrapper">
+
+      <div class="car">
+
+        <div class="car-body">
+
+          <div class="number">
+            95
+          </div>
+
+          <div class="light"></div>
+
+        </div>
+
+        <div class="car-top"></div>
+
+        <div class="window"></div>
+        <div class="window two"></div>
+
+        <div class="wheel one"></div>
+        <div class="wheel two"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ROAD -->
+
+    <div class="road">
+
+      <div class="road-line"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       INTRO
+  ========================= -->
+
+  <section class="reveal">
+
+    <div class="small-title">
+      DÍA DE LOS HOT WHEELS
+    </div>
+
+    <h2 class="section-title">
+      VIVE LA <span>CARRERA</span>
+    </h2>
+
+    <p class="section-description">
+      Porque algunas personas hacen que cualquier día
+      se sienta como una carrera: lleno de emoción,
+      velocidad, risas y momentos que uno quisiera
+      repetir una y otra vez.
+    </p>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          🏎️
+        </div>
+
+        <h3>
+          VELOCIDAD
+        </h3>
+
+        <p>
+          Hay conexiones que no necesitan ir despacio
+          para sentirse especiales.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🏁
+        </div>
+
+        <h3>
+          META
+        </h3>
+
+        <p>
+          Porque entre tantas vueltas, curvas y caminos,
+          siempre hay alguien que hace que valga la pena
+          llegar hasta el final.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          ❤️
+        </div>
+
+        <h3>
+          PASIÓN
+        </h3>
+
+        <p>
+          De esas cosas bonitas que llegan sin avisar
+          y terminan acelerándote el corazón.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       COSAS LINDAS
+  ========================= -->
+
+  <section class="love-section reveal" id="cosas">
+
+    <div class="small-title">
+      PARA ÉL
+    </div>
+
+    <h2 class="section-title">
+      COSAS <span>LINDAS</span>
+    </h2>
+
+    <p class="section-description">
+      Algunas comparaciones un poquito cursis,
+      pero bonitas. Porque hasta los coches pueden
+      hablar de sentimientos. 🏎️❤️
+    </p>
+
+
+    <div class="love-grid">
+
+
+      <div class="love-card">
+
+        <h3>
+          🏎️ MI COCHE FAVORITO
+        </h3>
+
+        <p>
+          Entre tantos coches bonitos, siempre habría
+          uno que escogería para dar todas las vueltas
+          que hagan falta.
+        </p>
+
+      </div>
+
+
+      <div class="love-card">
+
+        <h3>
+          🏁 MI META
+        </h3>
+
+        <p>
+          Si la vida fuera una pista, no me importaría
+          cuántas curvas hubiera mientras pudiera
+          seguir compartiendo el camino contigo.
+        </p>
+
+      </div>
+
+
+      <div class="love-card">
+
+        <h3>
+          ❤️ MOTOR
+        </h3>
+
+        <p>
+          Dicen que un coche necesita motor para avanzar,
+          pero hay personas que con una sola sonrisa
+          hacen que el corazón acelere muchísimo más.
+        </p>
+
+      </div>
+
+
+      <div class="love-card">
+
+        <h3>
+          ⚡ VELOCIDAD
+        </h3>
+
+        <p>
+          Lo bonito no siempre llega despacio.
+          A veces llega rápido, te sorprende
+          y se queda dando vueltas en tu cabeza.
+        </p>
+
+      </div>
+
+
+      <div class="love-card">
+
+        <h3>
+          🌅 ATARDECER
+        </h3>
+
+        <p>
+          Si algún día pudiéramos manejar sin rumbo,
+          escogería una carretera con un atardecer
+          bonito y tu compañía.
+        </p>
+
+      </div>
+
+
+      <div class="love-card">
+
+        <h3>
+          🏆 GANAR
+        </h3>
+
+        <p>
+          No sé mucho de carreras, pero si encontrar
+          personas especiales fuera una competencia,
+          conocerte sería de esas vueltas que uno
+          recuerda para siempre.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MÚSICA
+  ========================= -->
+
+  <section class="music-section reveal" id="musica">
+
+    <div class="music-card">
+
+      <span class="music-icon">
+        🎶
+      </span>
+
+      <p class="mini-title">
+        SOUNDTRACK DE ESTA CARRERA
+      </p>
+
+      <h2>
+        Una canción para ti ❤️
+      </h2>
+
+      <p>
+        Porque toda carrera necesita una canción bonita
+        y esta me hizo pensar en ti.
+      </p>
+
+      <a
+        href="https://open.spotify.com/track/1tqqMC9aITEAnp0MjWvVky?si=XcRByJ7iRKG0qtXYo-jwjQ&utm_source=copy-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="spotify-button"
+      >
+        ▶ Escuchar en Spotify
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MENSAJE
+  ========================= -->
+
+  <section class="message reveal" id="mensaje">
+
+    <div class="message-box">
+
+      <div class="small-title">
+        ÚLTIMA VUELTA
+      </div>
+
+      <div class="quote">
+        KA-CHOW! ❤️
+      </div>
+
+      <p>
+        Bienvenido a este pequeño rincón hecho para ti.
+        No hace falta tener el coche más rápido,
+        ni ganar todas las carreras, ni conocer
+        exactamente cuál será el camino.
+      </p>
+
+      <br>
+
+      <p>
+        A veces solo hace falta disfrutar el recorrido,
+        reírse de las curvas, acelerar cuando toca
+        y encontrar a alguien con quien cualquier
+        camino se sienta especial.
+      </p>
+
+      <br>
+
+      <p>
+        Y si algún día hacemos nuestra propia carrera,
+        espero que tenga muchas vueltas,
+        muchas risas y momentos que valga la pena
+        recordar. 🏎️❤️🏁
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    Hecho con ❤️, gasolina imaginaria
+    y muchas ganas de acelerar.
+
+    <br><br>
+
+    <strong>KA-CHOW! 🏎️💨</strong>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* LOADER */
+
+    const loader = document.getElementById("loader");
+    const loaderNumber = document.getElementById("loaderNumber");
+
+    let count = 3;
+
+    const loaderInterval = setInterval(() => {
+
+      count--;
+
+      if (count > 0) {
+
+        loaderNumber.textContent = count;
+
+      } else {
+
+        loaderNumber.textContent = "GO!";
+
+        clearInterval(loaderInterval);
+
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 700);
+
+      }
+
+    }, 800);
+
+
+    /* NAVBAR */
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* PROGRESS */
+
+    window.addEventListener("scroll", () => {
+
+      const scrollTop = window.scrollY;
+
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+      const progress =
+        (scrollTop / height) * 100;
+
+      document.getElementById("progress").style.width =
+        progress + "%";
+
+    });
+
+
+    /* REVEAL */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* ACELERAR */
+
+    const speedButton =
+      document.getElementById("speedButton");
+
+    speedButton.addEventListener("click", () => {
+
+      document.body.classList.toggle("fast-mode");
+
+      if (
+        document.body.classList.contains("fast-mode")
+      ) {
+
+        speedButton.textContent =
+          "FRENAR 🛑";
+
+      } else {
+
+        speedButton.textContent =
+          "KA-CHOW ⚡";
+
+      }
+
+    });
+
+
+    /* PARALLAX */
+
+    document.addEventListener("mousemove", (event) => {
+
+      const x =
+        (event.clientX / window.innerWidth - 0.5) * 20;
+
+      const y =
+        (event.clientY / window.innerHeight - 0.5) * 20;
+
+      const car =
+        document.querySelector(".car-wrapper");
+
+      if (car) {
+
+        car.style.transform =
+          `translate(${x}px, ${y}px)`;
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
