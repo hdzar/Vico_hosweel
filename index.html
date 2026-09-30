@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KA-CHOW! 🏎️❤️</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090909;
+    color:white;
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+    --red:#e50914;
+    --red2:#ff2633;
+    --yellow:#ffc400;
+    --dark:#090909;
+    --gray:#181818;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(12px);
+
+    z-index:100;
+    border-bottom:2px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-family:'Anton',sans-serif;
+    font-size:27px;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:var(--red);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--yellow);
+}
+
+
+/* =========================
+   BANDERAS
+========================= */
+
+.flags{
+    position:absolute;
+    top:75px;
+    left:0;
+    width:100%;
+    height:30px;
+
+    background:
+    repeating-linear-gradient(
+        90deg,
+        white 0px,
+        white 25px,
+        black 25px,
+        black 50px
+    );
+
+    opacity:.9;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.85)
+        ),
+        linear-gradient(
+            #d98a48,
+            #e2a45d 45%,
+            #9d572d
+        );
+}
+
+
+/* cielo */
+
+.hero::before{
+    content:"";
+    position:absolute;
+
+    top:100px;
+    left:0;
+
+    width:100%;
+    height:45%;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255,255,255,.8) 0 5%,
+            transparent 6%
+        ),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(255,255,255,.6) 0 4%,
+            transparent 5%
+        );
+
+    opacity:.35;
+}
+
+
+/* sol */
+
+.sun{
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:#ffd84a;
+
+    top:150px;
+    right:12%;
+
+    box-shadow:
+        0 0 80px #ff9d00,
+        0 0 150px rgba(255,150,0,.4);
+}
+
+
+/* =========================
+   MONTAÑAS
+========================= */
+
+.mountains{
+    position:absolute;
+
+    bottom:180px;
+    left:0;
+
+    width:100%;
+    height:230px;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 35%,
+            #70402b 36%,
+            #70402b 60%,
+            transparent 61%
+        );
+
+    opacity:.9;
+}
+
+
+/* =========================
+   HERO TEXTO
+========================= */
+
+.hero-content{
+    position:relative;
+    z-index:10;
+
+    max-width:900px;
+
+    padding:120px 20px 200px;
+}
+
+.pre-title{
+    color:white;
+
+    font-size:14px;
+    font-weight:700;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+}
+
+h1{
+    font-family:'Anton',sans-serif;
+
+    font-size:clamp(80px,15vw,180px);
+
+    line-height:.8;
+
+    text-transform:uppercase;
+
+    color:var(--red);
+
+    -webkit-text-stroke:3px white;
+
+    text-shadow:
+        8px 8px 0 #111,
+        14px 14px 0 rgba(0,0,0,.4);
+
+    animation:entrada 1s ease;
+}
+
+@keyframes entrada{
+
+    from{
+        opacity:0;
+        transform:scale(.5) translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+.ka{
+    display:block;
+
+    color:var(--yellow);
+
+    font-family:'Anton',sans-serif;
+
+    font-size:clamp(45px,8vw,85px);
+
+    letter-spacing:5px;
+
+    text-shadow:
+        5px 5px 0 #111;
+
+    margin-top:25px;
+}
+
+.hero-text{
+    max-width:600px;
+
+    margin:25px auto;
+
+    line-height:1.8;
+
+    color:#fff;
+}
+
+
+/* =========================
+   BOTON
+========================= */
+
+.button{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:16px 32px;
+
+    background:var(--red);
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    border:3px solid white;
+
+    box-shadow:
+        6px 6px 0 #111;
+
+    transition:.25s;
+}
+
+.button:hover{
+
+    transform:translate(4px,4px);
+
+    box-shadow:
+        2px 2px 0 #111;
+
+    background:#ff1724;
+}
+
+
+/* =========================
+   CARRETERA
+========================= */
+
+.road{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:210px;
+
+    background:#252525;
+
+    border-top:8px solid #161616;
+
+    overflow:hidden;
+}
+
+
+/* líneas */
+
+.road::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:0;
+
+    width:200%;
+
+    height:10px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            white 0 100px,
+            transparent 100px 180px
+        );
+
+    animation:carretera .7s linear infinite;
+}
+
+@keyframes carretera{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-180px);
+    }
+
+}
+
+
+/* =========================
+   COCHE
+========================= */
+
+.car{
+
+    position:absolute;
+
+    z-index:20;
+
+    bottom:70px;
+
+    left:-250px;
+
+    width:190px;
+
+    height:75px;
+
+    background:var(--red);
+
+    border-radius:
+        70px 45px 20px 20px;
+
+    border:4px solid #111;
+
+    box-shadow:
+        0 10px 0 #111,
+        0 0 35px rgba(255,0,0,.7);
+
+    animation:coche 6s linear infinite;
+}
+
+
+/* techo */
+
+.car::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:85px;
+    height:45px;
+
+    background:#111;
+
+    top:-38px;
+    left:50px;
+
+    border-radius:60px 60px 0 0;
+
+    border:4px solid #111;
+
+}
+
+
+/* ventana */
+
+.car::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:60px;
+    height:27px;
+
+    background:#4c8aa1;
+
+    top:-28px;
+    left:62px;
+
+    border-radius:30px 30px 0 0;
+
+}
+
+
+/* ruedas */
+
+.wheel{
+
+    position:absolute;
+
+    bottom:-24px;
+
+    width:43px;
+    height:43px;
+
+    background:#080808;
+
+    border-radius:50%;
+
+    border:7px solid #555;
+
+}
+
+.wheel.one{
+    left:25px;
+}
+
+.wheel.two{
+    right:25px;
+}
+
+.wheel::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    background:#aaa;
+
+    border-radius:50%;
+
+    top:8px;
+    left:8px;
+}
+
+
+/* número */
+
+.number{
+
+    position:absolute;
+
+    right:40px;
+    top:15px;
+
+    font-family:'Anton',sans-serif;
+
+    font-size:35px;
+
+    color:white;
+
+    font-style:italic;
+}
+
+
+/* movimiento */
+
+@keyframes coche{
+
+    from{
+        transform:translateX(-300px);
+    }
+
+    to{
+        transform:translateX(calc(100vw + 400px));
+    }
+
+}
+
+
+/* =========================
+   FLORES
+========================= */
+
+.flower{
+
+    position:absolute;
+
+    z-index:8;
+
+    font-size:35px;
+
+    animation:flotar 4s ease-in-out infinite;
+}
+
+.flower.one{
+    top:22%;
+    left:7%;
+}
+
+.flower.two{
+    top:35%;
+    right:7%;
+
+    animation-delay:1s;
+}
+
+.flower.three{
+    bottom:25%;
+    left:10%;
+
+    animation-delay:2s;
+}
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:translateY(0) rotate(0);
+    }
+
+    50%{
+        transform:translateY(-20px) rotate(15deg);
+    }
+
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+section:not(.hero){
+
+    padding:100px 8%;
+
+    background:#090909;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-title span{
+
+    color:var(--yellow);
+
+    font-size:13px;
+
+    letter-spacing:5px;
+
+    font-weight:700;
+}
+
+.section-title h2{
+
+    font-family:'Anton',sans-serif;
+
+    font-size:clamp(45px,8vw,85px);
+
+    text-transform:uppercase;
+
+    margin-top:10px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+}
+
+.card{
+
+    background:#151515;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    border:2px solid #272727;
+
+    text-align:center;
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card:hover{
+
+    transform:
+        translateY(-10px)
+        rotate(-1deg);
+
+    border-color:var(--red);
+
+    box-shadow:
+        0 20px 50px
+        rgba(255,0,0,.2);
+}
+
+.card-icon{
+
+    font-size:50px;
+
+    margin-bottom:20px;
+}
+
+.card h3{
+
+    font-size:22px;
+
+    margin-bottom:12px;
+}
+
+.card p{
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.message{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:70px 35px;
+
+    border-radius:30px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(229,9,20,.2),
+            rgba(255,196,0,.06)
+        );
+
+    border:2px solid rgba(229,9,20,.4);
+
+}
+
+.message h2{
+
+    font-family:'Anton',sans-serif;
+
+    color:var(--red);
+
+    font-size:60px;
+
+    text-shadow:
+        4px 4px 0 #111;
+}
+
+.message p{
+
+    color:#ccc;
+
+    line-height:1.8;
+
+    margin-top:20px;
+}
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+.counter{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+}
+
+.count{
+
+    background:#0d0d0d;
+
+    border:2px solid #252525;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    min-width:95px;
+}
+
+.count strong{
+
+    display:block;
+
+    color:var(--yellow);
+
+    font-family:'Anton',sans-serif;
+
+    font-size:35px;
+}
+
+.count span{
+
+    color:#777;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    background:#050505;
+
+    border-top:1px solid #222;
+
+    color:#777;
+
+    font-size:13px;
+}
+
+footer b{
+    color:var(--red);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    nav .links{
+        display:none;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content{
+        padding-bottom:220px;
+    }
+
+    .road{
+        height:180px;
+    }
+
+    .car{
+        transform:scale(.8);
+        transform-origin:bottom left;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAV
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        <span>95</span> RACING
+    </div>
+
+    <div class="links">
+        <a href="#inicio">Inicio</a>
+        <a href="#carrera">Carrera</a>
+        <a href="#mensaje">Mensaje</a>
+    </div>
+
+</nav>
+
+
+<!-- BANDERA -->
+<div class="flags"></div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="sun"></div>
+
+    <div class="mountains"></div>
+
+
+    <!-- FLORES -->
+
+    <div class="flower one">🌸</div>
+
+    <div class="flower two">🌼</div>
+
+    <div class="flower three">🌺</div>
+
+
+    <div class="hero-content">
+
+        <div class="pre-title">
+            🏁 Bienvenidos a la carrera
+        </div>
+
+
+        <h1>
+            RACING
+        </h1>
+
+
+        <div class="ka">
+            KA-CHOW! ⚡
+        </div>
+
+
+        <p class="hero-text">
+
+            Un día para celebrar la velocidad,
+            los coches increíbles y esa sensación
+            de pisar el acelerador y olvidarse
+            de todo lo demás. ❤️🏎️
+
+        </p>
+
+
+        <a href="#carrera" class="button">
+            ARRANCAR 🏁
+        </a>
+
+    </div>
+
+
+    <!-- CARRETERA -->
+
+    <div class="road">
+
+        <div class="car">
+
+            <div class="number">
+                95
+            </div>
+
+            <div class="wheel one"></div>
+            <div class="wheel two"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CARRERA
+========================= -->
+
+<section id="carrera">
+
+    <div class="section-title">
+
+        <span>
+            LIGHTNING SPEED
+        </span>
+
+        <h2>
+            A toda velocidad
+        </h2>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🏎️
+            </div>
+
+            <h3>
+                Velocidad
+            </h3>
+
+            <p>
+                Pisa el acelerador y disfruta
+                cada segundo de la carrera.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🏁
+            </div>
+
+            <h3>
+                La meta
+            </h3>
+
+            <p>
+                No importa qué tan rápido vayas,
+                lo importante es disfrutar el camino.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌸
+            </div>
+
+            <h3>
+                Un toque cute
+            </h3>
+
+            <p>
+                Porque hasta los coches de carreras
+                pueden tener un poquito de flores.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MENSAJE
+========================= -->
+
+<section id="mensaje">
+
+    <div class="message">
+
+        <h2>
+            KA-CHOW! ⚡
+        </h2>
+
+
+        <p>
+
+            Bienvenid@ a la pista.
+
+            <br><br>
+
+            Aquí no existen los límites,
+            solamente carreteras,
+            motores y ganas de acelerar.
+
+            <br><br>
+
+            Así que abróchate el cinturón...
+            porque la carrera está a punto de comenzar. ❤️🏎️
+
+        </p>
+
+
+        <!-- CONTADOR -->
+
+        <div class="counter">
+
+            <div class="count">
+                <strong id="days">00</strong>
+                <span>DÍAS</span>
+            </div>
+
+            <div class="count">
+                <strong id="hours">00</strong>
+                <span>HORAS</span>
+            </div>
+
+            <div class="count">
+                <strong id="minutes">00</strong>
+                <span>MINUTOS</span>
+            </div>
+
+            <div class="count">
+                <strong id="seconds">00</strong>
+                <span>SEGUNDOS</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    Hecho con ❤️, gasolina imaginaria
+    y mucha velocidad.
+
+    <br><br>
+
+    <b>95 • KA-CHOW! 🏎️</b>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+const fecha = new Date(
+    "September 30, 2026 00:00:00"
+).getTime();
+
+
+function contador(){
+
+    const ahora =
+        new Date().getTime();
+
+    const diferencia =
+        fecha - ahora;
+
+
+    if(diferencia <= 0){
+
+        document.getElementById("days").textContent = "00";
+
+        document.getElementById("hours").textContent = "00";
+
+        document.getElementById("minutes").textContent = "00";
+
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+
+    }
+
+
+    const dias =
+        Math.floor(
+            diferencia /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const horas =
+        Math.floor(
+            (diferencia %
+            (1000 * 60 * 60 * 24))
+            /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutos =
+        Math.floor(
+            (diferencia %
+            (1000 * 60 * 60))
+            /
+            (1000 * 60)
+        );
+
+
+    const segundos =
+        Math.floor(
+            (diferencia %
+            (1000 * 60))
+            /
+            1000
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(dias).padStart(2,"0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(horas).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutos).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(segundos).padStart(2,"0");
+
+}
+
+
+contador();
+
+setInterval(contador,1000);
+
+
+/* =========================
+   EFECTO AL HACER SCROLL
+========================= */
+
+const cards =
+    document.querySelectorAll(".card");
+
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity = "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.2
+        }
+
+    );
+
+
+cards.forEach(card => {
+
+    card.style.opacity = "0";
+
+    card.style.transform =
+        "translateY(40px)";
+
+    card.style.transition =
+        "all .7s ease";
+
+    observer.observe(card);
+
+});
+
+
+</script>
+
+</body>
+</html>
